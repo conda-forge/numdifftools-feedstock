@@ -1,6 +1,6 @@
 {% set name = "numdifftools" %}
-{% set version = "0.9.20" %}
-{% set sha256 = "a6af9a28851cc9a207720d949b34b6ac70f0bccb365d9df3c6ef3ffd91176257" %}
+{% set version = "0.9.39" %}
+{% set sha256 = "227c75c53665997c46ca44f6eb848c66acfde33bf483c6a6ef0b1faeef4434ac" %}
 
 package:
   name: {{ name|lower }}
