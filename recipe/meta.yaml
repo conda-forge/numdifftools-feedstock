@@ -17,12 +17,12 @@ build:
   noarch: python
   
 requirements:
-  build:
+  host:
     - python
     - setuptools
+    - pip
   run:
     - python
-    - pip
     - setuptools  # the __init__ files use pkg_resources
     - numpy >=1.9
     - scipy >=0.8
