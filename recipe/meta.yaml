@@ -1,6 +1,6 @@
 {% set name = "numdifftools" %}
-{% set version = "0.9.20" %}
-{% set sha256 = "a6af9a28851cc9a207720d949b34b6ac70f0bccb365d9df3c6ef3ffd91176257" %}
+{% set version = "0.9.39" %}
+{% set sha256 = "227c75c53665997c46ca44f6eb848c66acfde33bf483c6a6ef0b1faeef4434ac" %}
 
 package:
   name: {{ name|lower }}
@@ -13,20 +13,21 @@ source:
 
 build:
   number: 0
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
   noarch: python
   
 requirements:
-  build:
+  host:
     - python
     - setuptools
-    - pyscaffold <2.5  # doesn't build with older versions
+    - pip
+    - pytest-runner  # in setup_requires for some reason
   run:
     - python
-    - setuptools  # the __init__ files use pkg_resources
     - numpy >=1.9
     - scipy >=0.8
     - algopy >=0.4
+    - statsmodels >=0.6
 
 test:
   imports:
@@ -40,7 +41,7 @@ about:
   summary: Solves automatic numerical differentiation problems in one or more variables.
   license: BSD-3-Clause
   license_family: BSD
-  license_file: '{{ environ["RECIPE_DIR"] }}/LICENSE.txt'  # https://github.com/pbrod/numdifftools/pull/35
+  license_file: LICENSE.txt
   doc_url: http://numdifftools.readthedocs.io/en/latest/
   dev_url: https://github.com/pbrod/numdifftools/
 
