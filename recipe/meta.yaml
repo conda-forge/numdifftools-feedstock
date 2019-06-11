@@ -21,9 +21,9 @@ requirements:
     - python
     - setuptools
     - pip
+    - pytest-runner  # in setup_requires for some reason
   run:
     - python
-    - setuptools  # the __init__ files use pkg_resources
     - numpy >=1.9
     - scipy >=0.8
     - algopy >=0.4
