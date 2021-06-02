@@ -1,6 +1,6 @@
 {% set name = "numdifftools" %}
-{% set version = "0.9.39" %}
-{% set sha256 = "227c75c53665997c46ca44f6eb848c66acfde33bf483c6a6ef0b1faeef4434ac" %}
+{% set version = "0.9.40" %}
+{% set sha256 = "940692fd795e47083fad481d93c432b7fa9378758b5681dfc73a65152abfcd57" %}
 
 package:
   name: {{ name|lower }}
@@ -13,9 +13,9 @@ source:
 
 build:
   number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
   noarch: python
-  
+
 requirements:
   host:
     - python
@@ -37,7 +37,7 @@ test:
     - python -m numdifftools.tests.test_multicomplex
 
 about:
-  home: "https://github.com/pbrod/numdifftools/"
+  home: https://github.com/pbrod/numdifftools/
   summary: Solves automatic numerical differentiation problems in one or more variables.
   license: BSD-3-Clause
   license_family: BSD
