@@ -18,12 +18,12 @@ build:
 
 requirements:
   host:
-    - python
+    - python >=3.7
     - setuptools
     - pip
     - pytest-runner  # in setup_requires for some reason
   run:
-    - python
+    - python >=3.7
     - numpy >=1.9
     - scipy >=0.8
     - algopy >=0.4
