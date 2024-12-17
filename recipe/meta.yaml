@@ -8,28 +8,30 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . --no-deps -vv
   noarch: python
 
 requirements:
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - setuptools
     - pip
     - pytest-runner  # in setup_requires for some reason
   run:
-    - python >=3.7
+    - python >={{ python_min }}
     - numpy >=1.9
     - scipy >=0.8
     - algopy >=0.4
     - statsmodels >=0.6
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - numdifftools
     - numdifftools.tests
