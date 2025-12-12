@@ -1,6 +1,8 @@
 {% set name = "numdifftools" %}
-{% set version = "0.9.41" %}
-{% set sha256 = "4ef705cd3c06211b3a4e9fd05ad622be916dcfda40732f0128805a2c4be389b4" %}
+{% set version = "0.9.42" %}
+{% set sha256 = "866675171f293c4bf2f1e1c5bf9b88a07d5396903e3b3e7fcc3879e2a01cfbc1" %}
+{% set python_min = "3.10" %}
+
 
 package:
   name: {{ name|lower }}
@@ -12,30 +14,38 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  # Reset build number to 0 for a new version upload
+  number: 0
   script: {{ PYTHON }} -m pip install . --no-deps -vv
   noarch: python
 
 requirements:
   host:
     - python {{ python_min }}
-    - setuptools
+    - pdm-backend
     - pip
-    - pytest-runner  # in setup_requires for some reason
+    - setuptools
   run:
     - python >={{ python_min }}
-    - numpy >=1.9
-    - scipy >=0.8
-    - algopy >=0.4
-    - statsmodels >=0.6
+    - numpy >=1.21.2
+    - scipy >=1.7.3
 
 test:
   requires:
     - python {{ python_min }}
+    - pip
+    - pytest
+    - pytest-cov
+    - numpy
+    - scipy
+    - algopy >=0.4
+    - statsmodels >=0.6
+    - matplotlib >=3.8.0
   imports:
     - numdifftools
     - numdifftools.tests
   commands:
+    - pip check
     - python -m numdifftools.tests.test_multicomplex
 
 about:
@@ -44,7 +54,7 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.txt
-  doc_url: http://numdifftools.readthedocs.io/en/latest/
+  doc_url: https://numdifftools.readthedocs.io/en/latest/
   dev_url: https://github.com/pbrod/numdifftools/
 
 extra:
