@@ -1,6 +1,6 @@
 {% set name = "numdifftools" %}
-{% set version = "0.9.42" %}
-{% set sha256 = "866675171f293c4bf2f1e1c5bf9b88a07d5396903e3b3e7fcc3879e2a01cfbc1" %}
+{% set version = "0.10.1" %}
+{% set sha256 = "21c38c7f562f11a2dcd478da31c167ad0bcd559c58c94920a2ddebd1995b49fb" %}
 {% set python_min = "3.10" %}
 
 
@@ -10,7 +10,7 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
