@@ -37,6 +37,7 @@ test:
     - pip
     - pytest
     - pytest-cov
+    - hypothesis
     - algopy >=0.4
     - statsmodels >=0.6
     - matplotlib-base >=3.8.0
