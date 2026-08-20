@@ -1,6 +1,6 @@
 {% set name = "numdifftools" %}
-{% set version = "0.9.42" %}
-{% set sha256 = "866675171f293c4bf2f1e1c5bf9b88a07d5396903e3b3e7fcc3879e2a01cfbc1" %}
+{% set version = "0.10.1" %}
+{% set sha256 = "21c38c7f562f11a2dcd478da31c167ad0bcd559c58c94920a2ddebd1995b49fb" %}
 {% set python_min = "3.10" %}
 
 
@@ -10,7 +10,7 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
@@ -24,29 +24,26 @@ requirements:
     - python {{ python_min }}
     - pdm-backend
     - pip
-    - setuptools
   run:
     - python >={{ python_min }}
-    - numpy >=1.21.2
+    - numpy >=2.0
     - scipy >=1.7.3
 
 test:
-  requires:
-    - python {{ python_min }}
-    - pip
-    - pytest
-    - pytest-cov
-    - numpy
-    - scipy
-    - algopy >=0.4
-    - statsmodels >=0.6
-    - matplotlib >=3.8.0
   imports:
     - numdifftools
     - numdifftools.tests
+  requires:
+    - pip
+    - pytest
+    - pytest-cov
+    - hypothesis
+    - algopy >=0.4
+    - statsmodels >=0.6
+    - matplotlib-base >=3.8.0
   commands:
     - pip check
-    - python -m numdifftools.tests.test_multicomplex
+    - pytest --pyargs numdifftools
 
 about:
   home: https://github.com/pbrod/numdifftools/
