@@ -1,6 +1,6 @@
 {% set name = "numdifftools" %}
-{% set version = "0.10.1" %}
-{% set sha256 = "21c38c7f562f11a2dcd478da31c167ad0bcd559c58c94920a2ddebd1995b49fb" %}
+{% set version = "0.11.1" %}
+{% set sha256 = "af6d58c22eb201fef9aa4dfc8caf286b14e10154a736c03a45f0a1df2bcec452" %}
 {% set python_min = "3.10" %}
 
 
